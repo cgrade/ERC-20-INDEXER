@@ -11,9 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
-import dotenv from 'dotenv';
-
-
+import API from '../apikey';
 
 
 function App() {
@@ -25,7 +23,7 @@ function App() {
   
   async function getTokenBalance() {
     const config = {
-      apiKey: process.env.API_KEY,
+      apiKey: API,
       network: Network.ETH_MAINNET,
     };
 
