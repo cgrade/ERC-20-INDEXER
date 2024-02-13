@@ -8,9 +8,10 @@ This is a simple react app that uses the Alchemy SDK rigged to Alchemy's Enhance
 2.  Start application by running `npm run dev`
 3.  Get your Alchemy API from [Alchemy](https://alchemy.com/?a=eth-bootcamp)
 4.  Create a js file in the project directory called 'apikey.js'
-5.  Paste this into the file
-    `const API = "2nnXt-hcbSwYKUfNvkIwfVrbnUNEqcBN";
+5.  Paste this into the file:
+    `
 
+        const API = "2nnXt-hcbSwYKUfNvkIwfVrbnUNEqcBN";
         export default API;
 
     `
