@@ -12,7 +12,7 @@ import {
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
 import API from '../apikey';
-import { Spinner } from '@chakra-ui/react'
+
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 
@@ -93,24 +93,31 @@ function App() {
               justifyContent="center"
               flexDirection={'column'}
             >
-              <Heading mb={0} fontSize={'x-large'} color={'#fcb833'}>
+              <Heading mb={55} fontSize={'xx-large'} color={'#fcb833'}>
                 ERC-20 Token Indexer
               </Heading>
-              
-              <Text color={'#00aabb'}>
-                Connect your wallet and this website will return all of its ERC-20
-                token balances!
-              </Text>
             </Flex>
           </Center>
+  
           <Flex
             flexDirection="column"
             alignItems={'center'}
             justifyContent="center"
           >
-            <Heading mt={42}>
-
-            </Heading>
+          <Input
+          mt={50}
+            onChange={(e) => setUserAddress(e.target.value)}
+            color="black"
+            w="600px"
+            textAlign="center"
+            p={4}
+            bgColor="white"
+            fontSize={24}
+          />
+                        <Text color={'#00aabb'}>
+                Enter your address above or click connect your wallet below, to see all your ERC-20 Tokens and balances.
+                token balances!
+              </Text>
             <Text fontSize={20} fontFamily={'-moz-initial'} fontWeight={'bold'}>
               {isConnected? "Wallet Address: " + userAddress.substring(0, 5)+"......"+userAddress.substring(35) :"CONNECT YOUR WALLET"}
             </Text>
@@ -124,7 +131,7 @@ function App() {
             <Heading my={36} color="#f90f30">ERC-20 token balances:</Heading>
 
             {hasQueried ? (
-              <SimpleGrid w={'95vw'} columns={4} spacing={25} m={'1vw'}display={'flex'} justifyContent={'center'} >
+              <SimpleGrid columns={3} spacingX={25} spacingY='25' >
                 {results.tokenBalances.map((e, i) => {
                   return (
                     <Flex
