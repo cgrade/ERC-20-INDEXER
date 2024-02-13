@@ -17,7 +17,7 @@ import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 
 function App() {
-  const [userAddress, setUserAddress] = useState('0x2ba708e0d7dd07e7f2e51d9e06a7a7a55b25d3cc');
+  const [userAddress, setUserAddress] = useState('');
   const [results, setResults] = useState([]);
   const [hasQueried, setHasQueried] = useState(false);
   const [tokenDataObjects, setTokenDataObjects] = useState([]);
