@@ -11,25 +11,9 @@ This is a simple react app that uses the Alchemy SDK rigged to Alchemy's Enhance
 5.  Paste this into the file:
     `
 
-        const API = "2nnXt-hcbSwYKUfNvkIwfVrbnUNEqcBN";
+        const API = "<-- COPY-PASTE YOUR ALCHEMY API KEY HERE -->";
         export default API;
 
     `
 
-## Challenge
-
-Fork this repo and build out more features! This is minimalistic on purpose.
-
-We purposefully built this app to be minimalistic so that you can get some software development practice in fixing our bugs! 🪲
-
-Here are a few challenge suggestions:
-
-1. Add Wallet integration so that any user that connects their wallet can check their ERC-20 token balance
-2. There is no indication of a request in progress... that's bad UX! Do you think you can add some sort of indication of loading?
-3. Add some styling! 🎨
-4. The token balances can sometimes be a little long and break the outline of the page... can you fix that? 🔧
-5. There is no error-checking for wrongly formed requests, or really any error checking of any kind... can you add some in?
-6. The images and grid display could look better... anything you can do about that?
-7. There are ways to make this app faster... can you implement some of them? How can the query be made _even_ quicker?
-8. Can you add ENS support for inputs?
-9. Completely open-ended!! Use this as the base for your next hackathon project, dream company or personal expedition :)
+6.  Run `npm run dev` to start the local development server.
