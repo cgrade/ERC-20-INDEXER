@@ -63,6 +63,7 @@ function App() {
           ]
         });
         togleConnect(!isConnected);
+        setHasQueried(false)
       } else {
       
         // window.ethereum.isConnected ? console.log("is connected") : console.log("not connected1");
@@ -84,76 +85,82 @@ function App() {
     uxux();
   }
   return (
-    <Box w="100vw" m={'2vw'}>
-      <Center>
-        <Flex
-          alignItems={'center'}
-          justifyContent="center"
-          flexDirection={'column'}
-        >
-          <Heading mb={0} fontSize={36} color={'blueviolet'}>
-            ERC-20 Token Indexer
-          </Heading>
-          <Text>
-            Connect your wallet and this website will return all of its ERC-20
-            token balances!
-          </Text>
-        </Flex>
-      </Center>
-      <Flex
-        w="100%"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent={'center'}
-      >
-        <Heading mt={42}>
-          Get all the ERC-20 token balances of this address:
-        </Heading>
-        <Text fontSize={25} fontFamily={'-moz-initial'} fontWeight={'bold'}>
-          {isConnected? "Wallet Address: " + userAddress.substring(0, 5)+"......"+userAddress.substring(35) :"CONNECT YOUR WALLET"}
-        </Text>
-        <Button fontSize={20} onClick={connectWallet} mt={36} bgColor="red">
-        {isConnected ? "Disconnect Wallet" : "Connect Wallet"}
-      </Button>
-        <Button fontSize={20} onClick={handleClick} mt={36} bgColor="blue">
-          Check ERC-20 Token Balances
-        </Button>
-        <Text>{isloading && <CircularProgress isIndeterminate size='50px' color='green' />}</Text>
-        <Heading my={36}>ERC-20 token balances:</Heading>
+        
+        <Box width={'92vw'} m={'1.8vw'} p='2vw'bgColor='#112229' display="flex" alignItems="center" flexDirection={'column'}>
+          <Center>
+            <Flex
+              alignItems={'center'}
+              justifyContent="center"
+              flexDirection={'column'}
+            >
+              <Heading mb={0} fontSize={'x-large'} color={'#fcb833'}>
+                ERC-20 Token Indexer
+              </Heading>
+              
+              <Text color={'#00aabb'}>
+                Connect your wallet and this website will return all of its ERC-20
+                token balances!
+              </Text>
+            </Flex>
+          </Center>
+          <Flex
+            flexDirection="column"
+            alignItems={'center'}
+            justifyContent="center"
+          >
+            <Heading mt={42}>
 
-        {hasQueried ? (
-          <SimpleGrid w={'95vw'} columns={3} spacing={24}>
-            {results.tokenBalances.map((e, i) => {
-              return (
-                <Flex
-                  flexDir={'column'}
-                  color="white"
-                  bg="blue"
-                  w={'20vw'}
-                  h={'23vw'}
-                  p={'0.5vw'}
-                  key={i}
-                >
-                  <Box>
-                    <b>Symbol:</b> ${tokenDataObjects[i].symbol}&nbsp;
-                  </Box>
-                  <Box>
-                    <b>Balance:</b>&nbsp;
-                    {parseFloat(Utils.formatUnits(
-                      e.tokenBalance,
-                      tokenDataObjects[i].decimals
-                    )).toFixed(4)}
-                  </Box>
-                  <Image src={tokenDataObjects[i].logo} />
-                </Flex>
-              );
-            })}
-          </SimpleGrid>
-        ) : (
-          'Please make a query! This may take a few seconds...'
-        )}
-      </Flex>
-    </Box>
+            </Heading>
+            <Text fontSize={20} fontFamily={'-moz-initial'} fontWeight={'bold'}>
+              {isConnected? "Wallet Address: " + userAddress.substring(0, 5)+"......"+userAddress.substring(35) :"CONNECT YOUR WALLET"}
+            </Text>
+            <Button fontSize={20} onClick={connectWallet} mt={36} bgColor="#00aabb">
+            {isConnected ? "Disconnect Wallet" : "Connect Wallet"}
+            </Button>
+            <Button fontSize={20} onClick={handleClick} mt={36} bgColor="#e0bf20">
+            <Text m={0} color={"#f90f30"}>Check ERC-20 Token Balances</Text>
+            </Button>
+            <Text>{isloading && <CircularProgress isIndeterminate size='50px' color='green' />}</Text>
+            <Heading my={36} color="#f90f30">ERC-20 token balances:</Heading>
+
+            {hasQueried ? (
+              <SimpleGrid w={'95vw'} columns={4} spacing={25} m={'1vw'}display={'flex'} justifyContent={'center'} >
+                {results.tokenBalances.map((e, i) => {
+                  return (
+                    <Flex
+                      flexDir={'column'}
+                      color="#112229"
+                      bg="#fcb833"
+                      w={'12vw'}
+                      ml={'1vw'}
+                      fontSize={'inherit'}
+                
+                      p={'1vw'}
+                      key={i}
+                      alignItems={'center'}
+                      borderRadius={15}
+                      justifyContent="center"
+                    >
+                      <Box>
+                        <b>Symbol:</b> ${tokenDataObjects[i].symbol}&nbsp;
+                      </Box>
+                      <Box>
+                        <b>Balance:</b>&nbsp;
+                        {parseFloat(Utils.formatUnits(
+                          e.tokenBalance,
+                          tokenDataObjects[i].decimals
+                        )).toFixed(4)}
+                      </Box>
+                      <Image src={tokenDataObjects[i].logo} />
+                    </Flex>
+                  );
+                })}
+              </SimpleGrid>
+            ) : (
+              'Please make a query! This may take a few seconds...'
+            )}
+          </Flex>
+        </Box>
   );
 }
 
