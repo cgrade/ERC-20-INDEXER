@@ -12,6 +12,8 @@ import {
 import { Alchemy, Network, Utils } from 'alchemy-sdk';
 import { useState } from 'react';
 import API from '../apikey';
+import { Spinner } from '@chakra-ui/react'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
 
     setTokenDataObjects(await Promise.all(tokenDataPromises));
     setHasQueried(true);
+    togleLoading(false)
+
   }
 
   async function connectWallet(){
@@ -80,7 +84,7 @@ function App() {
     uxux();
   }
   return (
-    <Box w="100vw">
+    <Box w="100vw" m={'2vw'}>
       <Center>
         <Flex
           alignItems={'center'}
@@ -114,7 +118,7 @@ function App() {
         <Button fontSize={20} onClick={handleClick} mt={36} bgColor="blue">
           Check ERC-20 Token Balances
         </Button>
-        <Text>{isloading? "loading.....": ''}</Text>
+        <Text>{isloading && <CircularProgress isIndeterminate size='50px' color='green' />}</Text>
         <Heading my={36}>ERC-20 token balances:</Heading>
 
         {hasQueried ? (
